@@ -1,0 +1,34 @@
+@tailwind base;
+
+@layer base {
+  *,
+  *::after,
+  *::before {
+    transition: background-color 0.3s, border 0.3s;
+  }
+
+  :root {
+    --background-color: hsl(0, 0%, 100%);
+    --foreground-color: hsl(222.20000000000005, 47.4%, 11.2%);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background-color: hsl(198.46, 16.46%, 15.49%);
+      --foreground-color: hsl(180, 6.67%, 97.06%);
+    }
+  }
+
+  .dark {
+    --background-color: hsl(198.46, 16.46%, 15.49%);
+    --foreground-color: hsl(180, 6.67%, 97.06%);
+  }
+}
+
+body {
+  @apply bg-background text-foreground;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+@tailwind components;
+@tailwind utilities;
