@@ -7,7 +7,7 @@ export default function Hero() {
     <section className="mb-8 lg:mb-12">
       <div className="p-6 space-y-3 text-white rounded-xl bg-gradient-to-tr from-indigo-500 via-violet-400 to-purple-500">
         <h2 className="text-3xl font-semibold">
-          {locale === "id" ? "Personal Notes" : "Catatan Pribadi"}
+          {locale === "id" ? "Catatan Pribadi" : "Personal Notes"}
         </h2>
         <p>
           {locale === "id" ? (
