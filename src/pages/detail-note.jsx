@@ -75,7 +75,7 @@ export default function DetailNote() {
         <>
           {note ? (
             <section className="relative">
-              <div className="fixed bottom-0 right-0 transform -translate-y-12 -translate-x-4 sm:-translate-x-4 md:-translate-x-16 lg:-translate-y-8 xl:-translate-x-[24rem] z-[9999]">
+              <div className="fixed bottom-0 right-0 transform -translate-y-12 -translate-x-4 sm:-translate-x-4 md:-translate-x-4 lg:-translate-y-8 lg:-translate-x-24 2xl:-translate-x-[24rem] z-[9999]">
                 <div className="flex flex-row items-center gap-3">
                   {note.archived ? (
                     <button onClick={handleUnArcivedNote}>

@@ -35,7 +35,7 @@ export default function Home({ keyword, onChangeHandler }) {
 
   return (
     <section className="relative">
-      <div className="fixed bottom-0 right-0 transform -translate-y-12 -translate-x-4 sm:-translate-x-4 md:-translate-x-4 lg:-translate-y-8 xl:-translate-x-[24rem] z-[9999]">
+      <div className="fixed bottom-0 right-0 transform -translate-y-12 -translate-x-4 sm:-translate-x-4 md:-translate-x-4 lg:-translate-y-8 lg:-translate-x-24 2xl:-translate-x-[24rem] z-[9999]">
         <Link to="/notes/create">
           <div className="flex items-center justify-center w-10 h-10 bg-white border-2 border-purple-500 shadow-md dark:bg-gray-800 rounded-xl">
             <PlusIcon />
