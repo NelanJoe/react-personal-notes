@@ -9,6 +9,7 @@ import { useNote } from "../hooks/use-note";
 import { showFormattedDate } from "../utils";
 import { deleteNote, archiveNote, unarchiveNote } from "../utils/api";
 import toast from "react-hot-toast";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export default function DetailNote() {
   const navigate = useNavigate();
@@ -16,8 +17,31 @@ export default function DetailNote() {
   const { noteId } = useParams();
   const { note, isLoading, error } = useNote(noteId);
 
+  const queryClient = useQueryClient();
+
+  const { mutate: deleteNoteHandler } = useMutation({
+    mutationFn: (id) => deleteNote(id),
+    onSettled: () => {
+      queryClient.invalidateQueries(["notes"]);
+    },
+  });
+
+  const { mutate: archivedNoteHandler } = useMutation({
+    mutationFn: (id) => archiveNote(id),
+    onSettled: () => {
+      queryClient.invalidateQueries(["notes"]);
+    },
+  });
+
+  const { mutate: unarchivedNoteHandler } = useMutation({
+    mutationFn: (id) => unarchiveNote(id),
+    onSettled: () => {
+      queryClient.invalidateQueries(["notes"]);
+    },
+  });
+
   const handleArcivedNote = () => {
-    archiveNote(note.id);
+    archivedNoteHandler(note.id);
 
     toast.success("Successfully archived note");
 
@@ -25,7 +49,7 @@ export default function DetailNote() {
   };
 
   const handleUnArcivedNote = () => {
-    unarchiveNote(note.id);
+    unarchivedNoteHandler(note.id);
 
     toast.success("Successfully unarcived note");
 
@@ -33,7 +57,7 @@ export default function DetailNote() {
   };
 
   const handleDeleteNote = () => {
-    deleteNote(note.id);
+    deleteNoteHandler(note.id);
 
     toast.success("Successfully delete note");
 

@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import FormCreateNote from "../components/form-create-note";
 import { addNote } from "../utils/api";
@@ -7,8 +8,16 @@ import toast from "react-hot-toast";
 export default function CreateNote() {
   const navigate = useNavigate();
 
+  const queryClient = useQueryClient();
+  const { mutate: addNoteHandler } = useMutation({
+    mutationFn: (newNote) => addNote(newNote),
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ["notes"] });
+    },
+  });
+
   const createNote = (note) => {
-    addNote(note);
+    addNoteHandler(note);
 
     toast.success("Successfully add new note");
 
