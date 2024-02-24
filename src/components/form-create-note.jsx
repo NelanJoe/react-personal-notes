@@ -8,6 +8,15 @@ export default function FormCreateNote({ addNote }) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
+  // constant max length
+  const MAX_LENGTH_TITLE = 50;
+
+  const handleChangeTitle = (e) => {
+    if (title.length <= MAX_LENGTH_TITLE) {
+      setTitle(e.target.value);
+    }
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -27,9 +36,6 @@ export default function FormCreateNote({ addNote }) {
     setBody("");
   };
 
-  // constant max length
-  const MAX_LENGTH_TITLE = 50;
-
   return (
     <form onSubmit={onSubmit}>
       <div className="space-y-3">
@@ -48,7 +54,7 @@ export default function FormCreateNote({ addNote }) {
             placeholder="Functional component"
             className="px-4 py-2 border rounded-md dark:text-white dark:bg-slate-800/40"
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={handleChangeTitle}
             maxLength={MAX_LENGTH_TITLE}
           />
         </div>
