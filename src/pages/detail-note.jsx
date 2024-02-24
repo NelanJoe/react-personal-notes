@@ -98,8 +98,8 @@ export default function DetailNote() {
                 </div>
               </div>
               <div className="mt-8">
-                <div className="mb-8 space-y-1">
-                  <h2 className="text-3xl font-semibold lg:text-6xl">
+                <div className="mb-6 space-y-2">
+                  <h2 className="mb-5 text-3xl font-semibold break-words lg:text-6xl">
                     {note.title}
                   </h2>
                   <p className="italic opacity-60">

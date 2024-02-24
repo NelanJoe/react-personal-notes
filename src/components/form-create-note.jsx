@@ -45,7 +45,9 @@ export default function FormCreateNote({ addNote }) {
               <strong>Title</strong>
             </label>
             <p>
-              <strong>{MAX_LENGTH_TITLE - title.length}</strong>
+              <strong>
+                {title.length}/{MAX_LENGTH_TITLE}
+              </strong>
             </p>
           </div>
           <input
